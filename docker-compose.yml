@@ -1,0 +1,22 @@
+version: '1.1'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: Prueba  # Nombre de la base de datos
+      MYSQL_USER: anahiperalta   # Usuario 
+      MYSQL_PASSWORD: ani123  # Contraseña
+      MYSQL_ROOT_PASSWORD: rootpassword  # Contraseña del root
+    ports:
+      - "3306:3306"  # Puerto para MySQL
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"  # Puerto para phpMyAdmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: rootpassword  # Contraseña del root
